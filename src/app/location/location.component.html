@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label for="locationInput">Location</label>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary"
+              (click)="useCurrentLocation()"
+              type="button">
+        My Location
+      </button>
+    </div>
+
+    <input #locationBox
+           type="text"
+           class="form-control"
+           placeholder="Location Name"
+           aria-describedby="locationHelp"
+           id="locationInput">
+
+
+    <div *ngIf='location'
+         class="input-group-append">
+      <button class="btn btn-outline-danger"
+              (click)="clearLocation()"
+              type="button">
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <small id="locationHelp"
+         class="form-text text-muted">Position: {{location}}</small>
+</div>

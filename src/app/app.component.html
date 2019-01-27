@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand"
+     (click)="navigate('/')">Danube Trip Log</a>
+
+  <button class="navbar-toggler"
+          type="button"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse"
+       id="collapseExample"
+       [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link"
+           (click)="navigate('/')">Map</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"
+           (click)="navigate('/blog')">Blog</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      <ng-container *ngIf='userService.loggedIn; else login'>
+        <li class="nav-item active">
+          <a class="nav-link"
+             (click)="navigate('/post')">Post</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"
+             (click)='logout()'>{{userService.username}}</a>
+        </li>
+      </ng-container>
+      <ng-template #login>
+        <li class="nav-item active">
+          <a class="nav-link"
+             (click)="navigate('/login')">Login</a>
+        </li>
+      </ng-template>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container body-content">
+  <router-outlet></router-outlet>
+  <hr />
+  <footer>
+    <p>&copy; 2018 - Dominick Schroer</p>
+  </footer>
+</div>

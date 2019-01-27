@@ -1,0 +1,10 @@
+
+img {
+    display: block;
+    width: 80%;
+    height: auto;
+}
+
+.progress-container {
+    flex-grow: 1;
+}

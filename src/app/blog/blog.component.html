@@ -1,0 +1,11 @@
+<div class='mb-5'
+     *ngFor="let info of postInfo">
+
+  <app-blog-post [post]='info.val'></app-blog-post>
+
+  <div *ngIf="userService.loggedIn"
+       class='mt-3'>
+    <a routerLink="/post/{{info.id}}">edit post</a>
+  </div>
+
+</div>

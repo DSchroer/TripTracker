@@ -1,0 +1,36 @@
+<header>
+  <h3>{{post.title}}</h3>
+  <span>Posted: {{formatDate(post.date)}}</span>
+  <div>
+    <span *ngIf='post.location && post.location.name'>Location: {{post.location.name}}</span>
+  </div>
+</header>
+
+<p>{{post.description}}</p>
+
+<button *ngIf='post.photos && post.photos.length'
+        class="btn btn-primary"
+        (click)="open(content)">Show Pictures</button>
+
+<ng-template #content
+             let-c="close"
+             let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{post.title}} Pictures</h4>
+    <button type="button"
+            class="close"
+            (click)="c(content)"
+            aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ngb-carousel>
+      <ng-template *ngFor='let photo of post.photos'
+                   ngbSlide>
+        <img class="mx-auto"
+             [src]="photo">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</ng-template>

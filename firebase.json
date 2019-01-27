@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist/trip",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "src",
+      "e2e"
+    ]
+  }
+}
